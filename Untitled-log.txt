@@ -1,0 +1,59 @@
+1: package com.java21days;
+2:
+3: import java.awt.Point;
+4:
+5: class Box {
+6: int x1 = 0;
+7: int y1 = 0;
+8: int x2 = 0;
+9: int y2 = 0;
+10:
+11: Box buildBox(int x1, int y1, int x2, int y2) {
+12: this.x1 = x1;
+13: this.y1 = y1;
+14: this.x2 = x2;
+15: this.y2 = y2;
+16: return this;
+17: }
+18:
+19: Box buildBox(Point topLeft, Point bottomRight) {
+20: x1 = topLeft.x;
+21: y1 = topLeft.y;
+22: x2 = bottomRight.x;
+23: y2 = bottomRight.y;
+24: return this;
+25: }
+26:
+27: Box buildBox(Point topLeft, int w, int h) {
+28: x1 = topLeft.x;
+29: y1 = topLeft.y;
+30: x2 = (x1 + w);
+31: y2 = (y1 + h);
+32: return this;
+33: }
+34:
+35: void printBox(){
+36: System.out.print(“Box: <” + x1 + “, “ + y1);
+37: System.out.println(“, “ + x2 + “, “ + y2 + “>”);
+38: }
+39:
+40: public static void main(String[] arguments) {
+41: Box rect = new Box();
+42:
+43: System.out.println(“Calling buildBox with “
+44: + “coordinates (25,25) and (50,50):”);
+45: rect.buildBox(25, 25, 50, 50);
+46: rect.printBox();
+47:
+48: System.out.println(“\nCalling buildBox with “
+49: + “points (10,10) and (20,20):”);
+50: rect.buildBox(new Point(10, 10), new Point(20, 20));
+51: rect.printBox();
+52:
+53: System.out.println(“\nCalling buildBox with “
+54: + “point (10,10), width 50 and height 50:”);
+55:
+56: rect.buildBox(new Point(10, 10), 50, 50);
+57: rect.printBox();
+58: }
+59: }
